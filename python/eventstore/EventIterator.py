@@ -8,12 +8,18 @@ class EventIterator():
         self._size = len(self._events)
         self._index = 0
 
+    def _parentUpdated(self):
+        """eventstore was updated"""
+        # search
+
     def moveNext(self):
         """move to the next event (if possible)"""
         if self._index +1 == self.size:
-            return False
-        self._index += 1
-        return True
+            self.last = False
+        else:
+            self.last = True
+            self._index += 1
+        return self.last
 
     def current():
         """return the current event"""
